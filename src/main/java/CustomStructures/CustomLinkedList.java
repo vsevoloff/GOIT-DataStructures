@@ -57,8 +57,46 @@ public class CustomLinkedList<T> {
         size--;
     }
 
+    public void clear() {
+        Node<T> current = head;
+
+        for (int i = 0; i < size; i++) {
+            current.setPrevious(null);
+            current.setElement(null);
+        }
+
+        size = 0;
+
+        tail.setPrevious(null);
+        tail.setElement(null);
+    }
+
+    public T get(int index) {
+
+        if (index < 0 || index >= size) {
+            System.out.println("Wrong index!");
+            return null;
+        }
+
+        Node<T> current = head;
+
+        for (int i = 0; i < index; i++) {
+            current = current.getNext();
+        }
+
+        return current.getElement();
+
+    }
+
+
+
     @Override
     public String toString() {
+
+        if (size == 0) {
+            return "List is empty!";
+        }
+
         Node<T> current = head;
         StringBuilder result = new StringBuilder();
 
