@@ -63,12 +63,13 @@ public class CustomLinkedList<T> {
         for (int i = 0; i < size; i++) {
             current.setPrevious(null);
             current.setElement(null);
+            current = current.getNext();
         }
 
         size = 0;
 
-        tail.setPrevious(null);
-        tail.setElement(null);
+       tail = null;
+       head = null;
     }
 
     public T get(int index) {

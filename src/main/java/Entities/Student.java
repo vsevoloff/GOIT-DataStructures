@@ -7,7 +7,7 @@ import java.util.Comparator;
 
 @Getter
 @Setter
-public class Student extends Human implements Comparable<Student>{
+public class Student extends Human implements Comparable<Student> {
 
     private String group;
 
@@ -17,11 +17,18 @@ public class Student extends Human implements Comparable<Student>{
     }
 
     @Override
-    public int compareTo(Student student) {
-        return  name.compareTo(student.name);
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        result.append("Name: ").append(name)
+               .append(", age: ").append(age)
+                .append(", group: ").append(group)
+                 .append("\n");
+        return result.toString();
     }
 
 
-
-
+    @Override
+    public int compareTo(Student o) {
+        return this.name.compareTo(o.getName());
+    }
 }

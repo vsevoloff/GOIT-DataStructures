@@ -32,10 +32,6 @@ public class CustomArrayList<T>  {
         elements = newElements;
     }
 
-    public T[] getArrayElements() {
-        return elements;
-    }
-
     public void remove(int index) {
 
         try {
@@ -77,7 +73,16 @@ public class CustomArrayList<T>  {
 
     @Override
     public String toString() {
-        return Arrays.toString(elements);
+        if (size == 0) {
+            return "List is empty!";
+        }
+        StringBuilder result = new StringBuilder();
+
+        for (T element : elements) {
+            result.append(element.toString());
+        }
+        return  result.toString();
+
     }
 
 
