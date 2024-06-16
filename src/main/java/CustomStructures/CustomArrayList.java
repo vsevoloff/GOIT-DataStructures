@@ -79,7 +79,7 @@ public class CustomArrayList<T>  {
         StringBuilder result = new StringBuilder();
 
         for (T element : elements) {
-            result.append(element.toString());
+            result.append(element.toString()).append(" ");
         }
         return  result.toString();
 

@@ -3,15 +3,14 @@ package CustomStructures;
 import CustomExceptions.IndexException;
 import lombok.Getter;
 
-
-public class CustomLinkedList<T> {
-    private Node<T> tail = new Node<>();
+public class CustomStack<T>{
     private Node<T> head = new Node<>();
+    private Node<T> tail = new Node<>();
 
     @Getter
     private int size;
 
-    public void add(T element) {
+    public void push(T element) {
         Node<T> newElement = new Node<>();
         newElement.setElement(element);
         size++;
@@ -27,25 +26,25 @@ public class CustomLinkedList<T> {
         }
     }
 
-    public void remove(int index) {
+    public void remove(int index)  {
 
-            if(index < 0 || index > size-1) {
-                System.out.println("Wrong index!");
-                return;
-            }
+        if (index < 0 || index >= size) {
+            System.out.println("Wrong index!");
+            return;
+        }
 
         Node<T> current = head;
 
-        if(index == 0) {
+        if (index == 0) {
             if (head.getNext() == null) {
                 head = null;
                 tail = null;
-                size--;
-                return;
+
             }
-            head = head.getNext();
-        }
-        else if(index == size-1) {
+            else {
+                head = head.getNext();
+            }
+        } else if (index == size - 1){
             tail = tail.getPrevious();
         }
         else {
@@ -54,11 +53,12 @@ public class CustomLinkedList<T> {
                 current = current.getNext();
             }
 
-            Node<T> nextForCurrent = current.getNext();
-            Node<T> previousForCurrent = current.getPrevious();
+            Node<T> NextForCurrent = current.getNext();
+            Node<T> PreviousForCurrent = current.getPrevious();
+            current.setElement(null);
 
-            previousForCurrent.setNext(nextForCurrent);
-            nextForCurrent.setPrevious(previousForCurrent);
+            NextForCurrent.setPrevious(PreviousForCurrent);
+            PreviousForCurrent.setNext(NextForCurrent);
         }
         size--;
     }
@@ -67,52 +67,52 @@ public class CustomLinkedList<T> {
         Node<T> current = head;
 
         for (int i = 0; i < size; i++) {
-            current.setPrevious(null);
             current.setElement(null);
             current = current.getNext();
         }
-
         size = 0;
-
-       tail = null;
-       head = null;
+        tail = null;
+        head = null;
     }
 
-    public T get(int index) {
+    public T peek() {
+        return head.getElement();
+    }
 
-        if (index < 0 || index >= size) {
-            System.out.println("Wrong index!");
+    public T pop() {
+        if (size == 0) {
             return null;
         }
 
-        Node<T> current = head;
-
-        for (int i = 0; i < index; i++) {
-            current = current.getNext();
+        T element = head.getElement();
+        if (size == 1) {
+            head = null;
         }
 
-        return current.getElement();
-
+        else {
+            head.setElement(null);
+            head = head.getNext();
+            head.setPrevious(null);
+        }
+        size--;
+        return element;
     }
-
-
 
     @Override
     public String toString() {
-
         if (size == 0) {
-            return "List is empty!";
+            return "Stack is empty!";
         }
 
-        Node<T> current = head;
         StringBuilder result = new StringBuilder();
+        Node<T> current = head;
 
-        for(int i = 0; i < size; i++) {
-            result.append(current.getElement().toString()).append(" ");
+        for (int i = 0; i < size; i++) {
+             result.append(current.getElement().toString()).append(" ");
             current = current.getNext();
         }
 
-        return  result.toString();
+        return result.toString();
     }
 
 }
