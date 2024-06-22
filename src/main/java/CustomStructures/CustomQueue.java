@@ -34,7 +34,6 @@ public class CustomQueue<T>{
 
         for (int i = 0; i < size; i++) {
             current.setPrevious(null);
-            current.setElement(null);
             current = current.getNext();
         }
 
@@ -49,7 +48,6 @@ public class CustomQueue<T>{
 
     public T pool() {
         T elemnt = head.getElement();
-        head.setElement(null);
         head = head.getNext();
         head.setPrevious(null);
         size--;

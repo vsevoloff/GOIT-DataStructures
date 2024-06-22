@@ -68,7 +68,6 @@ public class CustomLinkedList<T> {
 
         for (int i = 0; i < size; i++) {
             current.setPrevious(null);
-            current.setElement(null);
             current = current.getNext();
         }
 

@@ -67,7 +67,7 @@ public class CustomStack<T>{
         Node<T> current = head;
 
         for (int i = 0; i < size; i++) {
-            current.setElement(null);
+            current.setPrevious(null);
             current = current.getNext();
         }
         size = 0;
@@ -90,7 +90,6 @@ public class CustomStack<T>{
         }
 
         else {
-            head.setElement(null);
             head = head.getNext();
             head.setPrevious(null);
         }
