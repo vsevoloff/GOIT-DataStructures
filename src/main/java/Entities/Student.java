@@ -21,8 +21,7 @@ public class Student extends Human implements Comparable<Student> {
         StringBuilder result = new StringBuilder();
         result.append("Name: ").append(name)
                .append(", age: ").append(age)
-                .append(", group: ").append(group)
-                 .append("\n");
+                .append(", group: ").append(group). append(" | ");
         return result.toString();
     }
 

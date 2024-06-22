@@ -73,6 +73,23 @@ public class CustomHashMap<K,V> {
         size = 0;
     }
 
+    public V get(K key) {
+        if(!isKeyExist(key)) {
+            System.out.println("Key not found");
+            return null;
+        }
+
+        Node<K,V> current = head;
+
+        for (int i = 0; i < size; i++) {
+            if (current.key.equals(key)) {
+                return current.value;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
     private boolean isKeyExist(K key){
         for (int i = 0; i < size; i++) {
             if (key.equals(keys.get(i))) {
