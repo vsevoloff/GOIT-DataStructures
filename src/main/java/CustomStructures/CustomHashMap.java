@@ -9,7 +9,6 @@ public class CustomHashMap<K,V> {
     private Node <K,V> tail = new Node<>();
     private CustomArrayList<K> keys = new CustomArrayList<>();
 
-    @Getter
     private int size;
 
     public void put(K key, V value) {
@@ -81,8 +80,9 @@ public class CustomHashMap<K,V> {
 
         Node<K,V> current = head;
 
+
         for (int i = 0; i < size; i++) {
-            if (current.key.equals(key)) {
+             if ((key == null && current.key == null) || (key != null && key.equals(current.key))) {
                 return current.value;
             }
             current = current.next;
@@ -92,7 +92,7 @@ public class CustomHashMap<K,V> {
 
     private boolean isKeyExist(K key){
         for (int i = 0; i < size; i++) {
-            if (key.equals(keys.get(i))) {
+            if ((key == null && keys.get(i) == null) || (key != null && key.equals(keys.get(i)))) {
                 return true;
             }
         }
@@ -101,11 +101,15 @@ public class CustomHashMap<K,V> {
 
     private int indexOfKey(K key) {
         for (int i = 0; i < size; i++) {
-            if (key.equals(keys.get(i))) {
+            if ((key == null && keys.get(i) == null) || (key != null && key.equals(keys.get(i)))) {
                 return i;
             }
         }
         return -1;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     @Override
@@ -119,8 +123,16 @@ public class CustomHashMap<K,V> {
         Node<K, V> current = head;
 
         for (int i = 0; i < size; i++) {
-            result.append("Key: ").append(current.key.toString())
-                    .append(" | Value: (").append(current.value.getClass().getSimpleName()).append(") ")
+
+            result.append("Key: ");
+            if (current.key == null) {
+                result.append("null");
+            }
+            else {
+                result.append(current.key.toString());
+            }
+
+            result.append(" | Value: (").append(current.value.getClass().getSimpleName()).append(") ")
                     .append(current.value.toString()).append('\n');
             current = current.next;
         }

@@ -1,14 +1,9 @@
 package CustomStructures;
 
-import lombok.Getter;
-
-import java.util.Arrays;
-
-public class CustomQueue<T>{
+public class CustomQueue<T> {
     private Node<T> head = new Node<>();
     private Node<T> tail = new Node<>();
 
-    @Getter
     private int size;
 
     public void add(T element) {
@@ -16,12 +11,10 @@ public class CustomQueue<T>{
         Node<T> newNode = new Node<>();
         newNode.setElement(element);
 
-        if (head.getElement() == null)
-        {
+        if (head.getElement() == null) {
             head = newNode;
             tail = newNode;
-        }
-        else {
+        } else {
             tail.setNext(newNode);
             newNode.setPrevious(tail);
             tail = newNode;
@@ -46,12 +39,16 @@ public class CustomQueue<T>{
         return head.getElement();
     }
 
-    public T pool() {
+    public T poll() {
         T elemnt = head.getElement();
         head = head.getNext();
         head.setPrevious(null);
         size--;
         return elemnt;
+    }
+
+    public int getSize() {
+        return size;
     }
 
     @Override
@@ -64,11 +61,42 @@ public class CustomQueue<T>{
         Node<T> current = head;
         StringBuilder result = new StringBuilder();
 
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++) {
             result.append(current.getElement().toString()).append(" ");
             current = current.getNext();
         }
 
         return result.toString();
     }
+
+    private static class Node<T> {
+        private T element;
+        private Node<T> next;
+        private Node<T> previous;
+
+        public void setElement(T element) {
+            this.element = element;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+
+        public void setPrevious(Node<T> previous) {
+            this.previous = previous;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public Node<T> getPrevious() {
+            return previous;
+        }
+
+        public T getElement() {
+            return element;
+        }
+    }
 }
+

@@ -8,7 +8,6 @@ public class CustomLinkedList<T> {
     private Node<T> tail = new Node<>();
     private Node<T> head = new Node<>();
 
-    @Getter
     private int size;
 
     public void add(T element) {
@@ -30,8 +29,7 @@ public class CustomLinkedList<T> {
     public void remove(int index) {
 
             if(index < 0 || index > size-1) {
-                System.out.println("Wrong index!");
-                return;
+                throw new IndexException("Wrong Index!");
             }
 
         Node<T> current = head;
@@ -80,8 +78,7 @@ public class CustomLinkedList<T> {
     public T get(int index) {
 
         if (index < 0 || index >= size) {
-            System.out.println("Wrong index!");
-            return null;
+            throw new IndexException("Wrong index!");
         }
 
         Node<T> current = head;
@@ -94,7 +91,7 @@ public class CustomLinkedList<T> {
 
     }
 
-
+    public int getSize() { return  size; }
 
     @Override
     public String toString() {
@@ -114,4 +111,33 @@ public class CustomLinkedList<T> {
         return  result.toString();
     }
 
+    private static class Node<T> {
+        private T element;
+        private Node<T> next;
+        private Node<T> previous;
+
+        public void setElement(T element) {
+            this.element = element;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+
+        public void setPrevious(Node<T> previous) {
+            this.previous = previous;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public Node<T> getPrevious() {
+            return previous;
+        }
+
+        public T getElement() {
+            return element;
+        }
+    }
 }

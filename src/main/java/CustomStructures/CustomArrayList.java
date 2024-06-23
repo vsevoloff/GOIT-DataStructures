@@ -8,7 +8,6 @@ import java.util.Arrays;
 
 public class CustomArrayList<T>  {
 
-    @Getter
     private int size = 0;
     private T[] elements;
 
@@ -34,14 +33,9 @@ public class CustomArrayList<T>  {
 
     public void remove(int index) {
 
-        try {
             if (index < 0 || index >= size) {
                 throw new IndexException("Wrong index!");
             }
-        } catch (IndexException ex) {
-            System.out.println(ex.getMessage());
-            return;
-        }
 
         T[] newElements = (T[]) new Object[--size];
 
@@ -60,15 +54,14 @@ public class CustomArrayList<T>  {
     }
 
     public T get(int index) {
-        try {
             if (index < 0 || index >= size) {
                 throw new IndexException("Wrong index!");
             }
-        } catch (IndexException ex) {
-            System.out.println(ex.getMessage());
-            return null;
-        }
         return elements[index];
+    }
+
+    public int getSize() {
+        return size;
     }
 
     @Override

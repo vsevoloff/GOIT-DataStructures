@@ -4,8 +4,6 @@ package org.example;
 import CustomStructures.*;
 import Entities.Student;
 
-import java.util.ArrayList;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -88,7 +86,7 @@ public class Main {
         // QUEUE
         System.out.println("QUEUE:");
         System.out.println("SIZE: " + queue.getSize());
-        System.out.println("POOL: " + queue.pool());
+        System.out.println("POOL: " + queue.poll());
         System.out.println("PEEK: " + queue.peek());
         System.out.println("CLEAR: "); queue.clear();
         System.out.println(queue);
@@ -97,8 +95,8 @@ public class Main {
         // HASH MAP
         System.out.println("HASH MAP: ");
         CustomHashMap<Integer, Student> map = new CustomHashMap<>();
-        map.put(1,student1);
-        map.put(2,student2);
+        map.put(null,student1);
+        map.put(1,student2);
         map.put(3,student3);
         map.put(4,student4);
         System.out.println(map);
