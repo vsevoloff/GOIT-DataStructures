@@ -2,7 +2,6 @@ package CustomStructures;
 
 
 import CustomExceptions.IndexException;
-import lombok.Getter;
 
 import java.util.Arrays;
 
@@ -60,7 +59,7 @@ public class CustomArrayList<T>  {
         return elements[index];
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

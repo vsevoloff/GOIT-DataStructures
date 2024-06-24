@@ -31,7 +31,7 @@ public class Main {
         System.out.println("ARRAY LIST: ");
         System.out.print("Get: ");
         System.out.println(arrayList.get(2));
-        System.out.println("Size: " + arrayList.getSize());
+        System.out.println("Size: " + arrayList.size());
         arrayList.remove(2);
         System.out.println("Delete element: ");
         System.out.println(arrayList);
@@ -52,7 +52,7 @@ public class Main {
 
         System.out.print("Get: ");
         System.out.println(linkedList.get(2));
-        System.out.println("Size: " + linkedList.getSize());
+        System.out.println("Size: " + linkedList.size());
         linkedList.remove(2);
         System.out.println("Delete element: ");
         System.out.println(linkedList);
@@ -70,7 +70,7 @@ public class Main {
         stack.push(student4);
 
         System.out.println("STACK: ");
-        System.out.println("SIZE: " + stack.getSize());
+        System.out.println("SIZE: " + stack.size());
         System.out.println("PEEK: "+ stack.peek());
         System.out.println("POP: " + stack.pop());
         System.out.print("Clear: ");
@@ -85,7 +85,7 @@ public class Main {
 
         // QUEUE
         System.out.println("QUEUE:");
-        System.out.println("SIZE: " + queue.getSize());
+        System.out.println("SIZE: " + queue.size());
         System.out.println("POOL: " + queue.poll());
         System.out.println("PEEK: " + queue.peek());
         System.out.println("CLEAR: "); queue.clear();
@@ -100,7 +100,7 @@ public class Main {
         map.put(3,student3);
         map.put(4,student4);
         System.out.println(map);
-        System.out.println("Size: " + map.getSize());
+        System.out.println("Size: " + map.size());
         System.out.println("Get #2: " + map.get(2));
         System.out.println("Remove #2: ");
         map.remove(2);

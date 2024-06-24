@@ -47,7 +47,7 @@ public class CustomQueue<T> {
         return elemnt;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

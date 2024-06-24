@@ -1,7 +1,6 @@
 package CustomStructures;
 
 import CustomExceptions.IndexException;
-import lombok.Getter;
 
 public class CustomStack<T>{
     private Node<T> head = new Node<>();
@@ -74,7 +73,7 @@ public class CustomStack<T>{
     }
 
     public T peek() {
-        return head.getElement();
+        return tail.getElement();
     }
 
     public T pop() {
@@ -82,20 +81,21 @@ public class CustomStack<T>{
             return null;
         }
 
-        T element = head.getElement();
+        T element = tail.getElement();
         if (size == 1) {
             head = null;
+            tail = null;
         }
 
         else {
-            head = head.getNext();
-            head.setPrevious(null);
+            tail = tail.getPrevious();
+            tail.setNext(null);
         }
         size--;
         return element;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

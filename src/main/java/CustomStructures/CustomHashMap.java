@@ -1,8 +1,5 @@
 package CustomStructures;
 
-import Entities.Student;
-import lombok.Getter;
-
 public class CustomHashMap<K,V> {
 
     private Node<K,V> head = new Node<>();
@@ -108,7 +105,7 @@ public class CustomHashMap<K,V> {
         return -1;
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 

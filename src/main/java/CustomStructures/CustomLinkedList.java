@@ -1,7 +1,6 @@
 package CustomStructures;
 
 import CustomExceptions.IndexException;
-import lombok.Getter;
 
 
 public class CustomLinkedList<T> {
@@ -91,7 +90,7 @@ public class CustomLinkedList<T> {
 
     }
 
-    public int getSize() { return  size; }
+    public int size() { return  size; }
 
     @Override
     public String toString() {
